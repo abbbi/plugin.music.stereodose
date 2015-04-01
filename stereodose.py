@@ -19,6 +19,9 @@ def get_streams(drug, mood):
     for stream in jsondata:
         streams.append(stream['soundurl'])
 
+    if len(streams) <= 0:
+        return None
+
     return streams
 
 def get_drugs():
@@ -38,7 +41,15 @@ def get_drugs():
 
             drugs[drug].append(mood)
 
+    if len(drugs) <= 0:
+        return None
+
     return drugs
 
-print get_streams('weed','chill')
-print get_drugs()
+drugs =  get_drugs()
+
+for drug in drugs:
+    print drug
+    for mood in drugs[drug]:
+        print mood
+        print get_streams(drug,mood)
