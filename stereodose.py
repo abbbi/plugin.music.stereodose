@@ -16,6 +16,7 @@ def get_drugs():
     drugs = dict()
     for link in html.find_all('a', {'class':"filter_option"} ,href=True):
         linkdata = link.get('href')
+        ''' only return official playlists for the moment '''
         if "playlist" in linkdata:
             start,dtype,drug,mood = linkdata.split('/')
             if not drugs.has_key(drug):
