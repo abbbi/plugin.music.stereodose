@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.music.stereodose" name="Stereodose" version="1.0.1" provider-name="Michael Ablassmeier">
+  <requires>
+    <import addon="script.module.requests" version="2.4.3"/>
+    <import addon="script.module.beautifulsoup" version="3.1.2"/>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="stereodose.py">
+    <provides>audio</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Stereodose addon</summary>
+    <description lang="en">Listen to stereodose playlists in KODI</description>
+    <disclaimer lang="en"></disclaimer>
+    <language></language>
+    <platform>all</platform>
+    <license>GPL</license>
+    <forum></forum>
+    <website>https://github.com/abbbi/plugin.music.stereodose/</website>
+    <email>abi@grinser.de</email>
+    <source>https://github.com/abbbi/plugin.music.stereodose/</source>
+  </extension>
+</addon>
