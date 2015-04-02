@@ -69,6 +69,7 @@ def errorout(message):
     dialog.ok(APPNAME, message)
     xbmcplugin.endOfDirectory(addon_handle)
     xbmc.executebuiltin("XBMC.Container.Update(path,replace)")
+    sys.exit(1)
 
 def get_drugs():
     '''
