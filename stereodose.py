@@ -5,6 +5,7 @@ import xbmcgui
 import xbmcplugin
 import urllib
 import urlparse
+import sys
 
 base_url = sys.argv[0]
 addon_handle = int(sys.argv[1])
@@ -94,7 +95,7 @@ def get_drugs():
 
 drugs = get_drugs()
 
-if drugs != None:
+if (drugs != None):
     dialog = xbmcgui.Dialog()
     drug_list = drugs.keys()
     drug_choice = dialog.select('Select drug', drug_list)
@@ -119,5 +120,4 @@ if drugs != None:
         l=l+1
         xbmcplugin.addDirectoryItem(handle=addon_handle, url=stream['url'], listitem=li)
     xbmcplugin.endOfDirectory(addon_handle)
-else:
-    errorout('Unable to get list of possible durgs to choose')
+    sys.exit(0)
