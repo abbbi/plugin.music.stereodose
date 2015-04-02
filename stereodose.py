@@ -50,8 +50,13 @@ def get_streams(drug, mood):
     streams = []
     for stream in jsondata:
         stream_id = stream['stream_id']
+        stream_artist = stream['artist']
+        if not stream_artist:
+            stream_artist = "Unknown"
         url = "https://api.soundcloud.com/tracks/"+stream_id+"/stream?client_id=" + client_id
-        streams.append(url)
+
+        data = dict(url=url, artist=stream_artist)
+        streams.append(data)
         
     if len(streams) <= 0:
         return None 
@@ -110,10 +115,9 @@ if drugs != None:
     xbmcplugin.setContent(addon_handle, 'movies')
     l = 0
     for stream in streams:
-        li = xbmcgui.ListItem("Stream ID: " + str(l), iconImage='DefaultVideo.png')
+        li = xbmcgui.ListItem(stream['artist'], iconImage='DefaultVideo.png')
         l=l+1
-        xbmcplugin.addDirectoryItem(handle=addon_handle, url=stream, listitem=li)
- 
+        xbmcplugin.addDirectoryItem(handle=addon_handle, url=stream['url'], listitem=li)
     xbmcplugin.endOfDirectory(addon_handle)
 else:
     errorout('Unable to get list of possible durgs to choose')
