@@ -35,9 +35,12 @@ def get_streams(drug, mood):
     '''
         get list of streamcloud links
     '''
-    script_parse = stream_script.split('[{', 1)[1].rsplit('}];', 1)[0]
-    streamdata = '[{' + script_parse + '}]'
-    jsondata = json_loads(streamdata)
+    try:
+        script_parse = stream_script.split('[{', 1)[1].rsplit('}];', 1)[0]
+        streamdata = '[{' + script_parse + '}]'
+        jsondata = json_loads(streamdata)
+    except:
+        errorout('Error parsing javascript code from ' + BASE_URL)
 
     ''' get sc_client_id '''
     pattern = re.compile("(.*)var.*?sc_client_id.*?=\s*(.*?);")
