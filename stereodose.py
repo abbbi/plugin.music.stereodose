@@ -21,7 +21,6 @@ def get_streams(drug, mood):
         parse streams from created java script code 
         tansform to python object by json
 
-        TODO:
         1) parse var sc_client_id = "5a1f0425ba83c55eeb08b895d48eec9a";
         2) get stream_id from json
         3) construct URL:
