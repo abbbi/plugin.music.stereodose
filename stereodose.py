@@ -10,7 +10,6 @@ base_url = sys.argv[0]
 addon_handle = int(sys.argv[1])
 args = urlparse.parse_qs(sys.argv[2][1:])
 mode = args.get('mode', None)
-xbmcplugin.setContent(addon_handle, 'movies')
 APPNAME = "Stereodose"
 BASE_URL = "https://www.stereodose.com"
 
@@ -106,10 +105,9 @@ if drugs != None:
     stream_mood = mood_list[mood_choice]
     stream_drug = drug_list[drug_choice]
 
-    print "playlist/" + stream_drug + "/" + stream_mood
-
     streams = get_streams(stream_drug, stream_mood)
 
+    xbmcplugin.setContent(addon_handle, 'movies')
     l = 0
     for stream in streams:
         li = xbmcgui.ListItem("Stream ID: " + str(l), iconImage='DefaultVideo.png')
@@ -119,5 +117,3 @@ if drugs != None:
     xbmcplugin.endOfDirectory(addon_handle)
 else:
     errorout('Unable to get list of possible durgs to choose')
-
-xbmcplugin.endOfDirectory(addon_handle)
