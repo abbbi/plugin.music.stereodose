@@ -81,7 +81,6 @@ def get_drugs():
     html = BeautifulSoup(urllib.urlopen(BASE_URL).read(), parse_only=SoupStrainer('a'))
     drugs = dict()
     for link in html.find_all('a', {'class':"filter_option"} ,href=True):
-        print "loop"
         linkdata = link.get('href')
         ''' only return official playlists for the moment '''
         if "playlist" in linkdata:
